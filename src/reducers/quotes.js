@@ -2,6 +2,7 @@ export default (state = [], action) => {
   let idx;
   switch(action.type){
     case "ADD_QUOTE":
+      console.log([...state, action.quote])
       return [
         ...state, action.quote
       ]

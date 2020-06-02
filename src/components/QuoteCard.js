@@ -1,6 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const QuoteCard = (props) =>
+const QuoteCard = (props) => {
+  console.log(props)
+  
+  return(
   <div>
     <div className="card card-inverse card-success card-primary mb-3 text-center">
       <div className="card-block">
@@ -33,6 +37,15 @@ const QuoteCard = (props) =>
         <div>Votes: {props.quote.votes}</div>
       </div>
     </div>
-  </div>;
+  </div>
+  )
+};
 
-export default QuoteCard;
+const mapDispatchToProps = dispatch => {
+  return {
+    upvoteQuote: () => dispatch({type: "UPVOTE_QUOTE"}),
+    downvoteQuote: () => dispatch({type: "DOWNVOTE_QUOTE"})
+  }
+}
+
+export default connect(null, mapDispatchToProps)(QuoteCard);
